@@ -1,0 +1,34 @@
+
+# Save Episodes Request
+
+*This model accepts additional fields of type Object.*
+
+## Structure
+
+`SaveEpisodesRequest`
+
+## Fields
+
+| Name | Type | Tags | Description | Getter | Setter |
+|  --- | --- | --- | --- | --- | --- |
+| `Ids` | `List<String>` | Required | A JSON array of the [Spotify IDs](https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids). <br/>A maximum of 50 items can be specified in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._ | List<String> getIds() | setIds(List<String> ids) |
+| `AdditionalProperties` | `Map<String, Object>` | Optional | - | Object getAdditionalProperty(String key) | additionalProperty(String key, Object value) |
+
+## Example
+
+```java
+import com.spotify.api.ApiHelper;
+import com.spotify.api.models.SaveEpisodesRequest;
+import java.io.IOException;
+import java.util.Arrays;
+
+SaveEpisodesRequest saveEpisodesRequest = new SaveEpisodesRequest.Builder(
+    Arrays.asList(
+        "ids9",
+        "ids0"
+    )
+)
+.additionalProperty("exampleAdditionalProperty", ApiHelper.deserialize("{\"key1\":\"val1\",\"key2\":\"val2\"}"))
+.build();
+```
+
